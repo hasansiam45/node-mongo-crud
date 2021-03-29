@@ -1,10 +1,9 @@
 const express = require('express');
-const password = 'hasansiam2020';
 const bodyParser = require('body-parser');
 
 const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectID;
-const uri = "mongodb+srv://hasansiam:hasansiam2020@cluster0.pqklg.mongodb.net/hasansiamdb?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.pqklg.mongodb.net/hasansiamdb?retryWrites=true&w=majority`;
 
 const app = express();
 app.use(bodyParser.json());
@@ -81,4 +80,4 @@ client.connect(err => {
 
 
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
